@@ -1,29 +1,31 @@
 #!/bin/bash
 
 
-# Store earlier .env
-mv ~/blogify/.env ~
-rm -r ~/blogify
-
+echo "=== Starting Deployment ==="
+# Preserve .env file
 cd ~
-git clone https://github.com/anand-shete/Blogify
-mv ~/Blogify/backend ~/blogify
-cd blogify
-npm install
+mv ~/test/.env ~
+rm -r ~/test
 
-# Move .env file to correct location
+
+# Clone the repository
+git clone https://github.com/anand-shete2/Test
+mv ~/Test/backend ~/test
+
+
+# Install dependencies
+cd test
+npm ci --omit=dev
 mv ~/.env .
-cd ~
 
 
-# Delete unused directories and processes
-rm -rf ~/Blogify
-pm2 delete blogify
+# Cleanup old processes
+rm -rf ~/Test
+pm2 delete test
 
 
 # Start new processes
-pm2 start npm --name "blogify" -- start
+cd test
+pm2 start npm --name "test" -- start
 
-
-# fixme change status of blogify to pruction on google cloud 
-# fixme Add Blog not working
+echo "=== Deployment Finished ==="
