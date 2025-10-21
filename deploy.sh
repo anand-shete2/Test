@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ~/.bashrc 
 
 echo "=== Starting Deployment ==="
 # Preserve .env file
