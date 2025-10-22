@@ -19,9 +19,13 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_KEY" > ~/.ssh/id_ed25519
+          ls ~/.ssh/id_ed25519 -l
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "$EC2_HOST" >> ~/.ssh/known_hosts
 
-      - name: SSH into EC2 instance
-        run: |
+      - name: Copy script using SCP
+        env:
+          SSH_KEY: ${{secrets.EC2_SSH_KEY}}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+        run:
           ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519 ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} < ./deploy.sh

@@ -1,8 +1,6 @@
 #!/bin/bash
 
 echo "=== Starting Deployment ==="
-which npm
-which pm2
 # Preserve .env file
 cd ~
 mv ~/test/.env ~
@@ -31,5 +29,7 @@ pm2 start npm --name "test" -- start
 hostname
 pwd
 whoami
+which npm
+which pm2
 
 echo "=== Deployment Finished ==="
