@@ -3,6 +3,9 @@
 source ~/.bashrc 
 
 echo "=== Starting Deployment ==="
+hostname
+pwd
+whoami
 # Preserve .env file
 cd ~
 mv ~/test/.env ~
@@ -28,5 +31,8 @@ pm2 delete test
 # Start new processes
 cd test
 pm2 start npm --name "test" -- start
+hostname
+pwd
+whoami
 
 echo "=== Deployment Finished ==="
