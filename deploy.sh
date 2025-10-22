@@ -1,6 +1,15 @@
 #!/bin/bash
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # Load nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # Optional: for completion
+nvm use 22  # e.g., nvm use 18 (match your running project's version)
+
 echo "=== Starting Deployment ==="
+whoami
+pwd 
+echo $HOME
+
 # Preserve .env file
 cd ~
 mv ~/test/.env ~
@@ -26,10 +35,5 @@ pm2 delete test
 # Start new processes
 cd test
 pm2 start npm --name "test" -- start
-hostname
-pwd
-whoami
-which npm
-which pm2
 
 echo "=== Deployment Finished ==="
