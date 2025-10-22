@@ -34,9 +34,6 @@ jobs:
         env:
           EC2_USER: ${{secrets.EC2_USER}}
           EC2_HOST: ${{ secrets.EC2_HOST }}
-          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
         run: |
           cat ~/.ssh/id_ed25519
-          ssh -i ~/.ssh/id_ed25519 "$SSH_USER"@"$SSH_HOST"
-          chmod +x ~/deploy.sh
-          ~/deploy.sh
+          ssh -i ~/.ssh/id_ed25519 "$EC2_USER"@"$EC2_HOST" 'chmod +x ~/deploy.sh && ~/deploy.sh'
