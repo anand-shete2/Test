@@ -37,3 +37,6 @@ jobs:
         run: |
           cat ~/.ssh/id_ed25519
           ssh -i ~/.ssh/id_ed25519 "$EC2_USER"@"$EC2_HOST" 'chmod +x ~/deploy.sh && ~/deploy.sh'
+
+      - name: Cleanup step
+        run: ls -l 
