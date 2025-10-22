@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "=== Starting Deployment ==="
-npm list -g
+which npm
 hostname
 pwd
 whoami
