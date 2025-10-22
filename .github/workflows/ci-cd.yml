@@ -39,4 +39,6 @@ jobs:
           ssh -i ~/.ssh/id_ed25519 "$EC2_USER"@"$EC2_HOST" 'chmod +x ~/deploy.sh && ~/deploy.sh'
 
       - name: Cleanup step
-        run: ls -la
+        run: |
+          ls ~ -la
+          ls ~/.ssh -la
