@@ -16,7 +16,7 @@ jobs:
         env:
           SSH_KEY: ${{secrets.EC2_SSH_KEY}}
           EC2_HOST: ${{ secrets.EC2_HOST }}
-        # Make sure that .pub file of SSH_KEY is added to the ~/.ssh/authorized_keys
+        # Make sure that .pub file of SSH_KEY is added to the ~/.ssh/authorized_keys to EC2 machine
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_KEY" > ~/.ssh/id_ed25519
@@ -39,6 +39,4 @@ jobs:
           ssh -i ~/.ssh/id_ed25519 "$EC2_USER"@"$EC2_HOST" 'chmod +x ~/deploy.sh && ~/deploy.sh'
 
       - name: Cleanup step
-        run: |
-          ls ~ -la
-          ls ~/.ssh -la
+        run: rm -rf ~/.ssh
