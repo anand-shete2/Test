@@ -1,8 +1,7 @@
 #!/bin/bash
 
-source ~/.bashrc 
-
 echo "=== Starting Deployment ==="
+npm list -g
 hostname
 pwd
 whoami
