@@ -2,9 +2,7 @@
 
 echo "=== Starting Deployment ==="
 which npm
-hostname
-pwd
-whoami
+which pm2
 # Preserve .env file
 cd ~
 mv ~/test/.env ~
