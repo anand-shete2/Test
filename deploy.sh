@@ -4,7 +4,6 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-# nvm use 22
 
 echo "=== Deployment Started ==="
 
@@ -25,9 +24,10 @@ npm ci --omit=dev
 mv ~/.env .
 
 
-# Cleanup old processes
-rm -rf ~/Test
+# Cleanup step
+rm -rf ~/Test ~/deploy.sh
 pm2 delete test || true
+
 
 
 # Start new processes
