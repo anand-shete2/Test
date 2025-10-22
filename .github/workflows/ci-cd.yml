@@ -14,7 +14,7 @@ jobs:
 
       - name: Set up private SSH key
         env:
-          SSH_KEY: ${{secrets.EC2_SSH_KEY}}
+          SSH_KEY: ${{secrets.SSH_KEY}}
           EC2_HOST: ${{ secrets.EC2_HOST }}
         # Make sure that .pub file of SSH_KEY is added to the ~/.ssh/authorized_keys to EC2 machine
         run: |
